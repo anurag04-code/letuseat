@@ -184,5 +184,4 @@
         ]
         }
     ];
-
 export default DISHES
