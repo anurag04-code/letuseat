@@ -23,7 +23,7 @@ function RenderDish({dish}){
 			            );
 	}
 	
-function RenderComments({comment, addcomment, dishId}){
+function RenderComments({comment, postComment, dishId}){
 			return(
 				<div className="col-12 col-md-5 m-1">
 					<h4><b>Comments</b></h4>
@@ -36,7 +36,7 @@ function RenderComments({comment, addcomment, dishId}){
 								</div>
 						)
 					})}
-					<CommentForm dishId={dishId} addcomment={addcomment}/>	
+					<CommentForm dishId={dishId} postComment={postComment}/>	
 				</div>
 		)
 	}
@@ -76,7 +76,7 @@ const Dishdetail = (props) => {
                 	</div>
 					<div className="row">
 						<RenderDish dish={props.dish} />		
-						<RenderComments comment={props.comments} addcomment={props.addcomment} dishId={props.dish.id} />			
+						<RenderComments comment={props.comments} postComment={props.postComment} dishId={props.dish.id} />			
 					</div>
 				</div>
 	
@@ -106,7 +106,7 @@ class CommentForm extends Component {
 					  
 	handleSubmit(values){
 			this.toggleModal()
-			this.props.addcomment(this.props.dishId, values.rating, values.author, values.comment);
+			this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
 		}
 					  
 	render(){
