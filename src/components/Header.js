@@ -38,7 +38,7 @@ export default class Header extends Component {
                 <Navbar dark expand="md">
                     <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
-                        <NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" 							width="41" alt='Ristorante Con Fusion' /></NavbarBrand>
+                        
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                             <NavItem>
@@ -58,20 +58,23 @@ export default class Header extends Component {
 								<Button onClick={this.toggleModal}><span className='fa fa-sign-in fa-											lg'></span> Login</Button>
 							</Nav>
                         </Collapse>
-                    </div>
+					</div>
                 </Navbar>
       <Jumbotron>
            <div className="container">
                <div className="row row-header">
+				   <div>
+					   <img src='assets/images/logo.png' height='150' width='150'></img>
+				   </div>
                    <div className="col-12 col-sm-6">
-                       <h1>Ristorante Con Fusion</h1>
+                       <h1>LET us EaT</h1>
                        <p>We take inspiration from the World's best cuisines, and create a unique fusion 								experience. Our lipsmacking creations will tickle your culinary senses!</p>
                    </div>
                </div>
            </div>
-       </Jumbotron>
+		</Jumbotron>
 		<Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-			<ModalHeader>Login</ModalHeader>
+			<ModalHeader styles='background-color : #4ce600'>Login</ModalHeader>
 			<ModalBody>
 				<Form onSubmit={this.handleLogin}>
 					<FormGroup>

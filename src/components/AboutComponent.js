@@ -1,28 +1,47 @@
  import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent.js'
+import { baseUrl } from '../shared/baseUrl.js'
+import { Fade, Stagger } from 'react-animation-components';
 
-function RenderLeader({lead}){
-	return(
-		<Media>
-			<Media left className="mr-3" >
-				<Media object src={lead.image}  alt={lead.name} />
-			</Media>
-			<Media body>
-				<Media heading>{lead.name}</Media>
-				<Media subtitle >{lead.designation}</Media>
-				<br />
-				{lead.description}
-			</Media>
-		</Media>
-	)
+function RenderLeader({lead , isLoading, errMess}){
+	if (isLoading) {
+        return(
+                <Loading />
+       );
+    }
+    else if (errMess) {
+        return(
+                <h4>{errMess}</h4>
+        );
+		
+    }
+	else {
+		return(
+			<Stagger in>
+				<Fade in>
+				<Media>
+					<Media left className="mr-3" >
+						<Media object src={baseUrl + lead.image}  alt={lead.name} />
+					</Media>
+					<Media body>
+						<Media heading>{lead.name}</Media>
+						<Media subtitle >{lead.designation}</Media>
+						<br />
+						{lead.description}
+					</Media>
+				</Media>
+				</Fade>
+				</Stagger	>
+	)}
 }
 
 
 function About(props) {
 	
-	const leaders = props.leaders.map((leader) => {
-        	return (
+	const leaders = props.leaders.leaders.map((leader) => {
+				return (
 				<div >
             		<RenderLeader lead={leader} />
 					<br />
@@ -45,18 +64,18 @@ function About(props) {
             <div className="row row-content">
                 <div className="col-12 col-md-6">
                     <h2>Our History</h2>
-                    <p>Started in 2010, Ristorante con Fusion quickly established itself as a culinary icon par excellence in Hong Kong. With its unique brand of world fusion cuisine that can be found nowhere else, it enjoys patronage from the A-list clientele in Hong Kong.  Featuring four of the best three-star Michelin chefs in the world, you never know what will arrive on your plate the next time you visit us.</p>
+                    <p>Started in 2010, LET us EaT quickly established itself as a culinary icon par excellence in LAEI MSWN. With its unique brand of world fusion cuisine that can be found nowhere else, it enjoys patronage from the A-list clientele in LAEI MSWN.  Featuring four of the best three-star Michelin chefs in the world, you never know what will arrive on your plate the next time you visit us.</p>
                     <p>The restaurant traces its humble beginnings to <em>The Frying Pan</em>, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</p>
                 </div>
                 <div className="col-12 col-md-5">
                     <Card>
-                        <CardHeader className="bg-primary text-white">Facts At a Glance</CardHeader>
+                        <CardHeader className="bg-danger text-white">Facts At a Glance</CardHeader>
                         <CardBody>
                             <dl className="row p-1">
                                 <dt className="col-6">Started</dt>
                                 <dd className="col-6">3 Feb. 2013</dd>
                                 <dt className="col-6">Major Stake Holder</dt>
-                                <dd className="col-6">HK Fine Foods Inc.</dd>
+                                <dd className="col-6">LAEI Fine Foods Inc.</dd>
                                 <dt className="col-6">Last Year's Turnover</dt>
                                 <dd className="col-6">$1,250,375</dd>
                                 <dt className="col-6">Employees</dt>
